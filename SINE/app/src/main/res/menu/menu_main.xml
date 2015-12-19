@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.dosse.bwentrain.androidPlayer.MainActivity" >
+    <item android:id="@+id/purchase" android:title="@string/purchase"></item>
+    <item android:id="@+id/socialCrap" android:title="@string/socialCrap">
+        <menu>
+            <item android:id="@+id/fb" android:title="@string/fb" />
+            <item android:id="@+id/tw" android:title="@string/tw" />
+            <item android:id="@+id/gp" android:title="@string/gp" />
+            <item android:id="@+id/web" android:title="@string/website" />
+        </menu>
+    </item>
+    <item android:id="@+id/playStore" android:title="@string/playStore"></item>
+    <item android:id="@+id/about" android:title="@string/title_activity_about"></item>
+    <item android:id="@+id/exit" android:title="@string/exit"></item>
+
+
+
+
+
+</menu>
