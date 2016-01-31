@@ -24,9 +24,10 @@ Import the projects into Android Studio. SDK 15 and 23 must be installed.
 ## Screenshots
 ![Screenshot](http://adolfintel.com/sine/android1.png)
 ![Screenshot](http://adolfintel.com/sine/android2.png)
+![Screenshot](http://adolfintel.com/sine/android3.png)
 
 ## License
-Copyright (C) 2015 Federico Dossena
+Copyright (C) 2016 Federico Dossena
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
