@@ -2,6 +2,7 @@ package com.dosse.bwentrain.androidPlayer;
 
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,8 +21,10 @@ import com.google.android.gms.ads.AdView;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -163,6 +166,39 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onPostCreate(Bundle savedInstanceState){
         new AdsController().start();
+        try {
+            if (getIntent().getData() != null) { //called from an url
+                Uri u = getIntent().getData();
+                if(u==null) throw new Exception();
+                String url = u.getScheme() + ":" + u.getEncodedSchemeSpecificPart();
+                if (url.toLowerCase().startsWith("http://sine.adolfintel.com/forum"))
+                    startActivity(new Intent(this, CommunityActivity.class).putExtra("path", url)); //throw the url to the community activity
+                else if (url.toLowerCase().startsWith("http://sine.adolfintel.com/goto.php") || url.toLowerCase().startsWith("http://sine.adolfintel.com/presets.php")) { //link to a preset, or to the preset page
+                    //attempt to convert to mobile and localized link
+                    try {
+                        String newUrl = getString(R.string.presets_url);
+                        //find preset id (if present) and add it to the new url
+                        String q = new URL(url).getQuery();
+                        if (q != null) {
+                            String[] query = q.split("\\?");
+                            for (String s : query) {
+                                String[] ss = s.split("=");
+                                if (ss[0].trim().equalsIgnoreCase("id")) {
+                                    newUrl += "%26id=" + Integer.parseInt(ss[1].trim());
+                                    break;
+                                }
+                            }
+                        }
+                        Intent i = new Intent(this, BrowserActivity.class);
+                        i.putExtra("path", newUrl);
+                        startActivity(i);
+                    } catch (Throwable t) {
+                        Toast.makeText(getApplicationContext(), getString(R.string.community_invalid_presetId), Toast.LENGTH_SHORT).show();
+                    }
+                }else throw new Exception(); //ignore unknown urls
+            } else throw new Exception();
+        }catch(Throwable t){
+        }
         try{
             openFileInput("material.run");
             //material.run exists, go straight to the app
@@ -170,7 +206,7 @@ public class MainActivity extends AppCompatActivity  {
             Intent i=new Intent(MainActivity.this,IntroActivity.class);
             try{
                 openFileInput("first.run");
-                //first.run exists, the user just updated the app, show update intro
+                //first.run exists, the user just updated the app to the material design version, show update intro
                 i.putExtra("update", true);
             }catch (Throwable t1){
                 //first.run does not exist, show intro
@@ -287,6 +323,10 @@ public class MainActivity extends AppCompatActivity  {
             if(s.toLowerCase().endsWith(".sin")){
                 fileList.add(s);
             }
+        /*
+        As of version 1.5, I removed the ability to put presets into the root of the sdcard, because it would sometimes slow down the application startup.
+        However, file and url associations have been implemented, so just open the preset you want to import from your file manager or your browser, and it will be imported into the app
+
         File sdcard = Environment.getExternalStorageDirectory(); //get all manually added files in the root of the sdcard
         File[] sd=sdcard.listFiles();
         if(sd!=null){
@@ -294,6 +334,7 @@ public class MainActivity extends AppCompatActivity  {
                 if(f.isFile()&&f.getName().toLowerCase().endsWith(".sin")) fileList.add(f.getAbsolutePath());
             }
         }
+        */
         //add link to preset sharing platform
         HashMap<String, String> siteLink = new HashMap<String, String>();
         siteLink.put("title",getString(R.string.download_presets));
@@ -318,7 +359,7 @@ public class MainActivity extends AppCompatActivity  {
         //insert all into ListView
         ListView files=(ListView) findViewById(R.id.listView1);
         files.setAdapter(new SimpleAdapter(this, list,android.R.layout.simple_list_item_2, new String[] { "title","author" }, new int[] { android.R.id.text1,android.R.id.text2 }));
-        
+
         //tap on item
         files.setOnItemClickListener(new OnItemClickListener(){
             @Override
@@ -388,6 +429,9 @@ public class MainActivity extends AppCompatActivity  {
             }
             if(id==R.id.playStore){
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.playStore_url))));
+            }
+            if(id==R.id.forum){
+                startActivity(new Intent(this,CommunityActivity.class).putExtra("path",getString(R.string.forum_url)));
             }
             if(id==R.id.fb){
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.fb_url))));

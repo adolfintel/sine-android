@@ -41,7 +41,6 @@
                 android:textSize="18dp"
                 android:text="HH:MM:SS, loops after HH:MM:SS"
                 android:textColor="@color/colorPrimaryDark2"
-                android:gravity="center_horizontal"
                 />
 
             <TextView

@@ -1,25 +1,29 @@
 <resources>
-    
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary0</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark0</item>
         <item name="colorAccent">@color/colorAccent0</item>
     </style>
+
     <style name="AppTheme1" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary1</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark1</item>
         <item name="colorAccent">@color/colorAccent1</item>
     </style>
+
     <style name="AppTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary2</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark2</item>
         <item name="colorAccent">@color/colorAccent2</item>
     </style>
+
     <style name="AppTheme3" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary3</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark3</item>
         <item name="colorAccent">@color/colorAccent3</item>
     </style>
+
     <style name="AppTheme4" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary4</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark4</item>
@@ -30,25 +34,30 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme1.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme2.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme3.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme4.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 
 </resources>

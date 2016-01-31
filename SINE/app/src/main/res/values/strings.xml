@@ -46,4 +46,13 @@
     <string name="minminfag2">I know, I know, ads are annoying, I use ad blockers too, but we really need your support to keep SINE alive, so please donate or unblock ads</string>
     <string name="minminfag3">(Don\'t worry, we won\'t bother you again)</string>
     <string name="minminfag4">GOT IT</string>
+    <string name="title_activity_community">Community</string>
+    <string name="community_invalid_presetId">Invalid Preset link</string>
+    <string name="community_unknown_url">You are leaving the SINE community</string>
+    <string name="unknown_download">Only SINE Presets can be downloaded from here</string>
+    <string name="forum">Community</string>
+    <string name="forum_url">http://sine.adolfintel.com/forum</string>
+    <string name="delete">Delete</string>
+    <string name="preset_importing">Importing Preset</string>
+    <string name="import_preset">Import SINE Preset</string>
 </resources>

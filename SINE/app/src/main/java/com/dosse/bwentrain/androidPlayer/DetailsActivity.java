@@ -1,5 +1,7 @@
 package com.dosse.bwentrain.androidPlayer;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -21,6 +23,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.os.Build;
+
+import java.io.File;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -57,9 +61,39 @@ public class DetailsActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.textView2)).setText(getIntent().getStringExtra("length")+(!l.isEmpty()?(getString(R.string.loops_after)+" "+l):""));
         super.onPostCreate(savedInstanceState);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.details_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id==android.R.id.home){
+            return super.onOptionsItemSelected(item);
+        }
+        if(id==R.id.delete){
+            //ask for confirm
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            DialogInterface.OnClickListener l = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if(which==DialogInterface.BUTTON_POSITIVE){	//delete confirmed
+                        if(new File(getIntent().getStringExtra("path")).exists()){ //delete file on sdcard
+                            new File(getIntent().getStringExtra("path")).delete();
+                        } else {//delete from app data
+                            deleteFile(getIntent().getStringExtra("path"));
+                        }
+                        finish(); //terminate this activity
+                    }
+                }
+            };
+            builder.setMessage(getString(R.string.delete_confirm)+" \""+getIntent().getStringExtra("title")+"\"?").setPositiveButton(getString(R.string.yes), l).setNegativeButton(getString(R.string.no), l).show();
+        }
+        return true;
     }
 
 }
