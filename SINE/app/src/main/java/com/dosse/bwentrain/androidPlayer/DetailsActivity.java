@@ -58,7 +58,7 @@ public class DetailsActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.textView1)).setText(getIntent().getStringExtra("description"));
         ((TextView)findViewById(R.id.textView0)).setText(getIntent().getStringExtra("title"));
         String l=getIntent().getStringExtra("loop");
-        ((TextView)findViewById(R.id.textView2)).setText(getIntent().getStringExtra("length")+(!l.isEmpty()?(getString(R.string.loops_after)+" "+l):""));
+        ((TextView)findViewById(R.id.textView2)).setText(getIntent().getStringExtra("length")+(!l.isEmpty()?(", "+getString(R.string.loops_after)+" "+l):""));
         super.onPostCreate(savedInstanceState);
     }
 

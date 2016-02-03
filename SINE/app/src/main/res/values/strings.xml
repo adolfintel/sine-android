@@ -12,7 +12,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="duration">Length</string>
-    <string name="loops_after">Loops after</string>
+    <string name="loops_after">loops after</string>
     <string name="purchase">Remove ads</string>
     <string name="purchase_url">market://details?id=com.dosse.bwentrain.androidPlayerKey</string>
     <string name="title_activity_about">About SINE</string>
@@ -49,10 +49,17 @@
     <string name="title_activity_community">Community</string>
     <string name="community_invalid_presetId">Invalid Preset link</string>
     <string name="community_unknown_url">You are leaving the SINE community</string>
+    <string name="load_error_community">Loading failed</string>
     <string name="unknown_download">Only SINE Presets can be downloaded from here</string>
-    <string name="forum">Community</string>
     <string name="forum_url">http://sine.adolfintel.com/forum</string>
     <string name="delete">Delete</string>
     <string name="preset_importing">Importing Preset</string>
     <string name="import_preset">Import SINE Preset</string>
+
+    <string name="navigation_drawer_open">Show navigation</string>
+    <string name="navigation_drawer_close">Hide navigation</string>
+    <string name="navigation_drawer_home">Home</string>
+    <string name="navigation_drawer_presets">Download presets</string>
+    <string name="navigation_drawer_community">Community</string>
+
 </resources>

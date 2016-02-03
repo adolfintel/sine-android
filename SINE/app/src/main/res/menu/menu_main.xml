@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.dosse.bwentrain.androidPlayer.MainActivity" >
     <item android:id="@+id/purchase" android:title="@string/purchase"></item>
-    <item android:id="@+id/forum" android:title="@string/forum"></item>
     <item android:id="@+id/socialCrap" android:title="@string/socialCrap">
         <menu>
             <item android:id="@+id/fb" android:title="@string/fb" />

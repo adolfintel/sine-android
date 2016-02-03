@@ -4,10 +4,15 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -22,20 +27,33 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class CommunityActivity extends AppCompatActivity {
+public class CommunityActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private WebView w;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView view = (NavigationView) findViewById(R.id.nav_view);
+        view.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
-        if (w!=null&&w.canGoBack()) {
-            w.goBack();
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (w!=null&&w.canGoBack()) {
+                w.goBack();
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -62,7 +80,8 @@ public class CommunityActivity extends AppCompatActivity {
             }
 
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                onBackPressed();
+                Toast.makeText(getApplicationContext(),getString(R.string.load_error_community),Toast.LENGTH_SHORT).show();
+                if(firstLoad) finish();
             }
 
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -173,4 +192,24 @@ public class CommunityActivity extends AppCompatActivity {
         w.restoreState(b);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.nav_home){
+            startActivity(new Intent(this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
+            finish();
+        }
+        if(id==R.id.nav_presets){
+            startActivity(new Intent(this,BrowserActivity.class).putExtra("path", getString(R.string.presets_url)));
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        ((NavigationView) findViewById(R.id.nav_view)).getMenu().getItem(2).setChecked(true);
+    }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/logo_notif"
+            android:title="@string/navigation_drawer_home"/>
+        <item
+            android:id="@+id/nav_presets"
+            android:icon="@android:drawable/stat_sys_download"
+            android:title="@string/navigation_drawer_presets"/>
+        <item
+            android:id="@+id/nav_community"
+            android:icon="@android:drawable/sym_action_chat"
+            android:title="@string/navigation_drawer_community"/>
+    </group>
+
+</menu>

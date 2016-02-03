@@ -6,7 +6,11 @@ import android.content.ContentResolver;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -77,7 +81,7 @@ import android.widget.TextView;
 import android.widget.SeekBar;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     private static PlayerController pc; //PlayerController interfaces with LibBWEntrainment to control the playback
     static{new IsochronicRenderer(null, null, 0).stopPlaying();} //preload IsochronicRenderer
     private Menu optionsMenu; //pointer to optionsMenu, used by AdsController to remove purchase option if app is licensed
@@ -158,6 +162,15 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        NavigationView view = (NavigationView) findViewById(R.id.nav_view);
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        view.setNavigationItemSelectedListener(this);
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+        view.getMenu().getItem(0).setChecked(true);
+
         //hide ads, will be shown again if the app is not licensed
         adsH=((AdView)findViewById(R.id.banner)).getLayoutParams().height;
         ((AdView)findViewById(R.id.banner)).getLayoutParams().height=0;
@@ -275,6 +288,7 @@ public class MainActivity extends AppCompatActivity  {
             pc.setButton(playPause);
         }
         populatePresetList();
+        ((NavigationView) findViewById(R.id.nav_view)).getMenu().getItem(0).setChecked(true);
         super.onResume();
     }
     @Override
@@ -283,6 +297,10 @@ public class MainActivity extends AppCompatActivity  {
         String request=i.getStringExtra("path");
         if(request!=null){
             Preset p=loadPreset(request);
+            if(pc==null){ //I got some bug reports where the PlayerController was null. This should not be possible, and I was not able to replicate the bug so I'll just try to restart the activity. Hopefully it will fix the bug?
+                startActivity(new Intent(this,MainActivity.class).putExtra("path",request).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
+                finish();
+            }
             if(p!=null) pc.setPreset(p); else Toast.makeText(getApplicationContext(), R.string.load_error, Toast.LENGTH_SHORT).show();
         }
         super.onNewIntent(i);
@@ -335,14 +353,15 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
         */
+        //generate items for ListView
         //add link to preset sharing platform
         HashMap<String, String> siteLink = new HashMap<String, String>();
-        siteLink.put("title",getString(R.string.download_presets));
-        siteLink.put("author",getString(R.string.theyre_free));
-        siteLink.put("description","");
+        siteLink.put("title", getString(R.string.download_presets));
+        siteLink.put("author", getString(R.string.theyre_free));
+        siteLink.put("description", "");
         siteLink.put("path", getString(R.string.presets_url));
         list.add(siteLink);
-        //generate items for ListView
+
         for(String f:fileList){
             Preset p=loadPreset(f);
             if(p==null) continue;
@@ -430,9 +449,6 @@ public class MainActivity extends AppCompatActivity  {
             if(id==R.id.playStore){
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.playStore_url))));
             }
-            if(id==R.id.forum){
-                startActivity(new Intent(this,CommunityActivity.class).putExtra("path",getString(R.string.forum_url)));
-            }
             if(id==R.id.fb){
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.fb_url))));
             }
@@ -459,4 +475,27 @@ public class MainActivity extends AppCompatActivity  {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.nav_presets){
+            startActivity(new Intent(this, BrowserActivity.class).putExtra("path", getString(R.string.presets_url)));
+        }
+        if(id==R.id.nav_community){
+            startActivity(new Intent(this,CommunityActivity.class).putExtra("path",getString(R.string.forum_url)));
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
