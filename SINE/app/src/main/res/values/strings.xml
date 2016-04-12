@@ -3,7 +3,7 @@
     <string name="title_activity_browser">Presets</string>
     <string name="download_presets">Download Presets</string>
     <string name="theyre_free">They\'re free!</string>
-    <string name="presets_url">http://sine.adolfintel.com/setLocale.php?l=en&amp;r=presets.php%3Fapp=true</string>
+    <string name="presets_url">http://isochronic.io/setLocale.php?l=en&amp;r=presets.php%3Fapp=true</string>
     <string name="load_error">An error occurred while loading the Preset</string>
     <string name="no_connection">No Internet connection</string>
     <string name="download_success">Preset downloaded</string>
@@ -22,7 +22,7 @@
     <string name="about_text_3">Credits and legal jargon</string>
     <string name="about_text_4">This application is developed by Federico Dossena and is distributed under the GNU GPLv3 License.\nLibBWEntrainment, LibBWEntrainment-Renderer-Isochronic and LibBWEntrainment-SoundBackends-Android are developed by Federico Dossena and are licensed under the GNU LGPLv3 License.\nSome of the graphics in this application were downloaded from  http://icons8.com/.</string>
     <string name="website">Visit our website</string>
-    <string name="website_url">http://sine.adolfintel.com</string>
+    <string name="website_url">http://isochronic.io</string>
     <string name="socialCrap">Follow SINE</string>
     <string name="fb">Facebook</string>
     <string name="fb_url">https://www.facebook.com/pages/SINE-Isochronic-Entrainer/649115715183345</string>
@@ -51,7 +51,7 @@
     <string name="community_unknown_url">You are leaving the SINE community</string>
     <string name="load_error_community">Loading failed</string>
     <string name="unknown_download">Only SINE Presets can be downloaded from here</string>
-    <string name="forum_url">http://sine.adolfintel.com/forum</string>
+    <string name="forum_url">http://isochronic.io/forum</string>
     <string name="delete">Delete</string>
     <string name="preset_importing">Importing Preset</string>
     <string name="import_preset">Import SINE Preset</string>

@@ -10,7 +10,7 @@ Isochronic tones are a commonly used aural stimuli for Brainwave Entrainment, co
 This Android Version only has playback capabilities.
  
 ## Website
-[SINE Isochronic Entrainer](http://sine.adolfintel.com/)
+[SINE Isochronic Entrainer](http://isochronic.io/)
 
 ## Download
 [Download from Google Play](https://play.google.com/store/apps/details?id=com.dosse.bwentrain.androidPlayer)

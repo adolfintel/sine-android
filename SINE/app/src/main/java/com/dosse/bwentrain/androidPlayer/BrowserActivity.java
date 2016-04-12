@@ -93,7 +93,7 @@ public class BrowserActivity extends AppCompatActivity implements NavigationView
             }
 
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url.toLowerCase().startsWith("http://sine.adolfintel.com/forum")) {
+                if (url.toLowerCase().startsWith("http://sine.adolfintel.com/forum")||url.toLowerCase().startsWith("http://isochronic.io/forum")) {
                     Intent i = new Intent(BrowserActivity.this, CommunityActivity.class);
                     i.putExtra("path", url);
                     startActivity(i);

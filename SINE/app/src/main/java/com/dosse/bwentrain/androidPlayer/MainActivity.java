@@ -184,9 +184,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 Uri u = getIntent().getData();
                 if(u==null) throw new Exception();
                 String url = u.getScheme() + ":" + u.getEncodedSchemeSpecificPart();
-                if (url.toLowerCase().startsWith("http://sine.adolfintel.com/forum"))
+                if (url.toLowerCase().startsWith("http://sine.adolfintel.com/forum") || url.toLowerCase().startsWith("http://isochronic.io/forum"))
                     startActivity(new Intent(this, CommunityActivity.class).putExtra("path", url)); //throw the url to the community activity
-                else if (url.toLowerCase().startsWith("http://sine.adolfintel.com/goto.php") || url.toLowerCase().startsWith("http://sine.adolfintel.com/presets.php")) { //link to a preset, or to the preset page
+                else if (url.toLowerCase().startsWith("http://sine.adolfintel.com/goto.php") || url.toLowerCase().startsWith("http://sine.adolfintel.com/presets.php") || url.toLowerCase().startsWith("http://isochronic.io/goto.php") || url.toLowerCase().startsWith("http://isochronic.io/presets.php")) { //link to a preset, or to the preset page
                     //attempt to convert to mobile and localized link
                     try {
                         String newUrl = getString(R.string.presets_url);

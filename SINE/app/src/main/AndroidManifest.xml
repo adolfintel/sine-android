@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.dosse.bwentrain.androidPlayer"
           xmlns:android="http://schemas.android.com/apk/res/android"
-          android:versionCode="19"
-          android:versionName="1.5.1">
+          android:versionCode="20"
+          android:versionName="1.5.2">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -32,6 +32,39 @@
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:host="isochronic.io">
+                </data>
+                <data android:scheme="http"/>
+                <data android:pathPattern="/presets.*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:host="isochronic.io">
+                </data>
+                <data android:scheme="http"/>
+                <data android:pathPattern="/goto.*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:host="isochronic.io">
+                </data>
+                <data android:scheme="http"/>
+                <data android:pathPattern="/forum.*"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
