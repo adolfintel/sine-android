@@ -55,11 +55,15 @@
     <string name="delete">Delete</string>
     <string name="preset_importing">Importing Preset</string>
     <string name="import_preset">Import SINE Preset</string>
-
     <string name="navigation_drawer_open">Show navigation</string>
     <string name="navigation_drawer_close">Hide navigation</string>
     <string name="navigation_drawer_home">Home</string>
     <string name="navigation_drawer_presets">Download presets</string>
     <string name="navigation_drawer_community">Community</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="noise_switch">Disable Background noise</string>
+    <string name="noise_switch_desc">Restart required</string>
+    <string name="noise_switch_restarting">SINE will restart in a moment, please wait...</string>
+
 
 </resources>

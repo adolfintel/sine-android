@@ -56,11 +56,14 @@
     <string name="delete">Cancella</string>
     <string name="preset_importing">Importo il Preset</string>
     <string name="import_preset">Importa Preset di SINE</string>
-
     <string name="navigation_drawer_open">Mostra navigazione</string>
     <string name="navigation_drawer_close">Nascondi navigazione</string>
     <string name="navigation_drawer_home">Home</string>
     <string name="navigation_drawer_presets">Scarica preset</string>
     <string name="navigation_drawer_community">Community</string>
+    <string name="title_activity_settings">Impostazioni</string>
+    <string name="noise_switch">Togli Rumore di sottofondo</string>
+    <string name="noise_switch_desc">Riavvio richiesto</string>
+    <string name="noise_switch_restarting">SINE ripartirà tra un istante...</string>
 
 </resources>

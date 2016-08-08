@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.dosse.bwentrain.core.Envelope;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -321,6 +323,12 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             doc.getDocumentElement().normalize();
             //parse it
             x = new Preset(doc.getDocumentElement());
+            if(getSharedPreferences("SINE",Context.MODE_PRIVATE).getBoolean("noise_switch",false)){
+                //if noise is disabled, remove it
+                Envelope e=x.getNoiseEnvelope();
+                while(e.getPointCount()!=1)e.removePoint(1);
+                e.setVal(0,0);
+            }
         } catch (Throwable t) {
             //corrupt or not a preset file
             Log.e("SINE",f+" invalid because "+t.toString());
@@ -461,6 +469,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             if(id==R.id.web){
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.website_url))));
             }
+            if(id==R.id.settings){
+                startActivity(new Intent(this,SettingsActivity.class));
+            }
             if(id==R.id.about){
                 startActivity(new Intent(this,AboutActivity.class));
             }
@@ -483,6 +494,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         }
         if(id==R.id.nav_community){
             startActivity(new Intent(this,CommunityActivity.class).putExtra("path",getString(R.string.forum_url)));
+        }
+        if(id==R.id.nav_settings){
+            startActivity(new Intent(this,SettingsActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

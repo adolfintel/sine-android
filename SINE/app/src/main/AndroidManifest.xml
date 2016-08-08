@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.dosse.bwentrain.androidPlayer"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          android:versionCode="20"
-          android:versionName="1.5.2">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dosse.bwentrain.androidPlayer"
+    android:versionCode="21"
+    android:versionName="1.6">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -18,86 +18,80 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
+            android:value="@integer/google_play_services_version" />
 
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="isochronic.io">
-                </data>
-                <data android:scheme="http"/>
-                <data android:pathPattern="/presets.*"/>
+                <data android:host="isochronic.io"></data>
+                <data android:scheme="http" />
+                <data android:pathPattern="/presets.*" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="isochronic.io">
-                </data>
-                <data android:scheme="http"/>
-                <data android:pathPattern="/goto.*"/>
+                <data android:host="isochronic.io"></data>
+                <data android:scheme="http" />
+                <data android:pathPattern="/goto.*" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="isochronic.io">
-                </data>
-                <data android:scheme="http"/>
-                <data android:pathPattern="/forum.*"/>
+                <data android:host="isochronic.io"></data>
+                <data android:scheme="http" />
+                <data android:pathPattern="/forum.*" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="sine.adolfintel.com">
-                </data>
-                <data android:scheme="http"/>
-                <data android:pathPattern="/presets.*"/>
+                <data android:host="sine.adolfintel.com"></data>
+                <data android:scheme="http" />
+                <data android:pathPattern="/presets.*" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="sine.adolfintel.com">
-                </data>
-                <data android:scheme="http"/>
-                <data android:pathPattern="/goto.*"/>
+                <data android:host="sine.adolfintel.com"></data>
+                <data android:scheme="http" />
+                <data android:pathPattern="/goto.*" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="sine.adolfintel.com">
-                </data>
-                <data android:scheme="http"/>
-                <data android:pathPattern="/forum.*"/>
+                <data android:host="sine.adolfintel.com"></data>
+                <data android:scheme="http" />
+                <data android:pathPattern="/forum.*" />
             </intent-filter>
         </activity>
         <activity
@@ -107,7 +101,7 @@
             android:theme="@style/AppTheme1.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.dosse.bwentrain.androidPlayer.MainActivity"/>
+                android:value="com.dosse.bwentrain.androidPlayer.MainActivity" />
         </activity>
         <activity
             android:name=".CommunityActivity"
@@ -117,7 +111,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.dosse.bwentrain.androidPlayer.MainActivity"/>
+                android:value="com.dosse.bwentrain.androidPlayer.MainActivity" />
         </activity>
         <activity
             android:name=".DetailsActivity"
@@ -126,7 +120,7 @@
             android:theme="@style/AppTheme2.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.dosse.bwentrain.androidPlayer.MainActivity"/>
+                android:value="com.dosse.bwentrain.androidPlayer.MainActivity" />
         </activity>
         <activity
             android:name=".AboutActivity"
@@ -136,40 +130,46 @@
             android:theme="@style/AppTheme3.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.dosse.bwentrain.androidPlayer.MainActivity"/>
+                android:value="com.dosse.bwentrain.androidPlayer.MainActivity" />
         </activity>
         <activity
             android:name=".IntroActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".MinMinFaggot"
             android:label="@string/title_activity_min_min_faggot"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme4.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme4.NoActionBar"></activity>
         <activity
             android:name=".PresetImportActivity"
             android:label="@string/import_preset"
             android:theme="@style/AppTheme3.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <data android:scheme="file"/>
-                <data android:mimeType="*/*"/>
-                <data android:pathPattern=".*\\.sin"/>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.sin" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <data android:scheme="content"/>
-                <data android:mimeType="*/*"/>
-                <data android:pathPattern=".*\\.sin"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="content" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.sin" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar"
+            >
         </activity>
     </application>
 

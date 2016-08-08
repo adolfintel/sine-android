@@ -1,5 +1,6 @@
 package com.dosse.bwentrain.androidPlayer;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -175,6 +176,9 @@ public class BrowserActivity extends AppCompatActivity implements NavigationView
         }
         if(id==R.id.nav_community){
             startActivity(new Intent(this,CommunityActivity.class).putExtra("path",getString(R.string.forum_url)));
+        }
+        if(id==R.id.nav_settings){
+            startActivity(new Intent(this,SettingsActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -1,5 +1,6 @@
 package com.dosse.bwentrain.androidPlayer;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -201,6 +202,9 @@ public class CommunityActivity extends AppCompatActivity implements NavigationVi
         }
         if(id==R.id.nav_presets){
             startActivity(new Intent(this,BrowserActivity.class).putExtra("path", getString(R.string.presets_url)));
+        }
+        if(id==R.id.nav_settings){
+            startActivity(new Intent(this,SettingsActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

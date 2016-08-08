@@ -12,6 +12,7 @@
         </menu>
     </item>
     <item android:id="@+id/playStore" android:title="@string/playStore"></item>
+    <item android:id="@+id/settings" android:title="@string/title_activity_settings"></item>
     <item android:id="@+id/about" android:title="@string/title_activity_about"></item>
     <item android:id="@+id/exit" android:title="@string/exit"></item>
 
