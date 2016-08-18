@@ -3,22 +3,18 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/logo_notif"
             android:title="@string/navigation_drawer_home"/>
         <item
             android:id="@+id/nav_presets"
-            android:icon="@android:drawable/stat_sys_download"
             android:title="@string/navigation_drawer_presets"/>
         <item
             android:id="@+id/nav_community"
-            android:icon="@android:drawable/sym_action_chat"
             android:title="@string/navigation_drawer_community"/>
     </group>
 
     <group android:checkableBehavior="none">
         <item
             android:id="@+id/nav_settings"
-            android:icon="@android:drawable/ic_menu_preferences"
             android:title="@string/title_activity_settings"/>
     </group>
 
