@@ -86,7 +86,7 @@ public class CommunityActivity extends AppCompatActivity implements NavigationVi
             }
 
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url.toLowerCase().startsWith("http://sine.adolfintel.com/forum") || url.toLowerCase().startsWith("http://isochronic.io/forum")) return false;
+                if (url.toLowerCase().startsWith("http://sine.adolfintel.com/forum") || url.toLowerCase().startsWith("http://isochronic.io/forum") || url.toLowerCase().startsWith("http://isochronic.io/uploads")) return false;
                 if (url.toLowerCase().startsWith("http://sine.adolfintel.com/goto.php") || url.toLowerCase().startsWith("http://sine.adolfintel.com/presets.php") || url.toLowerCase().startsWith("http://isochronic.io/goto.php") || url.toLowerCase().startsWith("http://isochronic.io/presets.php")) { //link to a preset, or to the preset page
                     //attempt to convert to mobile and localized link
                     try {

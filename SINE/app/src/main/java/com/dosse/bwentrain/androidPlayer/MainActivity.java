@@ -349,18 +349,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             if(s.toLowerCase().endsWith(".sin")){
                 fileList.add(s);
             }
-        /*
-        As of version 1.5, I removed the ability to put presets into the root of the sdcard, because it would sometimes slow down the application startup.
-        However, file and url associations have been implemented, so just open the preset you want to import from your file manager or your browser, and it will be imported into the app
 
-        File sdcard = Environment.getExternalStorageDirectory(); //get all manually added files in the root of the sdcard
-        File[] sd=sdcard.listFiles();
-        if(sd!=null){
-            for(File f:sd){ //add all manually added presets
-                if(f.isFile()&&f.getName().toLowerCase().endsWith(".sin")) fileList.add(f.getAbsolutePath());
-            }
-        }
-        */
         //generate items for ListView
         //add link to preset sharing platform
         HashMap<String, String> siteLink = new HashMap<String, String>();
