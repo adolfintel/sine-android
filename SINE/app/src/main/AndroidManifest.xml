@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dosse.bwentrain.androidPlayer"
-    android:versionCode="23"
-    android:versionName="1.6.2">
+    android:versionCode="24"
+    android:versionName="1.7">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -148,6 +148,10 @@
             android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar"
             >
         </activity>
+
+        <service
+            android:name=".PlayerControllerService"
+            android:enabled="true" />
     </application>
 
 </manifest>

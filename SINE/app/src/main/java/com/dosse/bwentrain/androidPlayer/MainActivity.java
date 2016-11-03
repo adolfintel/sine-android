@@ -465,8 +465,10 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 startActivity(new Intent(this,AboutActivity.class));
             }
             if(id==R.id.exit){
-                //cancel notifications and quit
+                //cancel notifications, kill service and quit
                 ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).cancel(0);
+                if(pc!=null)pc.killService();
+                Thread.sleep(100);
                 System.exit(0);
             }
         }catch(Throwable t){

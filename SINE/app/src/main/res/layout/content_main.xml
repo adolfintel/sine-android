@@ -19,7 +19,10 @@
         android:layout_marginBottom="12dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="4dp"
-        android:text="" />
+        android:text=""
+        android:enabled="false"
+        android:background="@drawable/play_disable"
+        />
 
     <ListView
         android:id="@+id/listView1"
@@ -41,7 +44,10 @@
         android:layout_toLeftOf="@+id/button1"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp"
-        android:indeterminate="false" />
+        android:indeterminate="false"
+        android:enabled="false"
+        android:progress="0"
+        />
 
     <TextView
         android:id="@+id/textView1"
