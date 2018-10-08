@@ -67,8 +67,6 @@
     <string name="noise_switch">Disable Background noise</string>
     <string name="noise_switch_desc">Restart required</string>
     <string name="noise_switch_restarting">SINE will restart in a moment, please wait...</string>
-    <string name="disablePowerSaving">Disable Power Saving</string>
-    <string name="disablePowerSavingDesc">Use this if playback stops unexpectedly</string>
 
 
 </resources>

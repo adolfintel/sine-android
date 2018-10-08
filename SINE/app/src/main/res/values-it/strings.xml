@@ -68,7 +68,5 @@
     <string name="noise_switch">Togli Rumore di sottofondo</string>
     <string name="noise_switch_desc">Riavvio richiesto</string>
     <string name="noise_switch_restarting">SINE ripartirà tra un istante...</string>
-    <string name="disablePowerSaving">Disattiva risparmio energia</string>
-    <string name="disablePowerSavingDesc">Se l\'audio si interrompe improvvisamente</string>
 
 </resources>
