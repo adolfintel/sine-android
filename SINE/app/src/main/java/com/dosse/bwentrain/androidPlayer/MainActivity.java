@@ -1,56 +1,5 @@
 package com.dosse.bwentrain.androidPlayer;
 
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.ContentResolver;
-import android.os.Build;
-import android.os.Bundle;
-import android.provider.Settings;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import com.dosse.bwentrain.core.Envelope;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
-
-import com.dosse.bwentrain.core.Preset;
-import com.dosse.bwentrain.renderers.isochronic.IsochronicRenderer;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -59,29 +8,48 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.Settings.Secure;
+import android.os.PowerManager;
+import android.provider.Settings;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 import android.widget.TextView;
-import android.widget.SeekBar;
-import android.widget.Button;
+import android.widget.Toast;
+
+import com.dosse.bwentrain.core.Envelope;
+import com.dosse.bwentrain.core.Preset;
+import com.dosse.bwentrain.renderers.isochronic.IsochronicRenderer;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
+import org.w3c.dom.Document;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     private static PlayerController pc; //PlayerController interfaces with LibBWEntrainment to control the playback
@@ -304,6 +272,13 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 finish();
             }
             if(p!=null) pc.setPreset(p); else Toast.makeText(getApplicationContext(), R.string.load_error, Toast.LENGTH_SHORT).show();
+            try { //try to disable power saving again, in case the user denied the first prompt
+                Intent intent = new Intent();
+                PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                startActivity(intent);
+            }catch(Throwable t){}
         }
         super.onNewIntent(i);
     }

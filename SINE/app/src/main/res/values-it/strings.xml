@@ -38,6 +38,9 @@
     <string name="intro1u">Grazie per aver aggiornato SINE!</string>
     <string name="intro2u">Tranquillo, è ancora tutto al suo posto!\nSperiamo che ti piaccia il nuovo look :)</string>
     <string name="intro3">INIZIA</string>
+    <string name="intro2_1">Riproduzione in background</string>
+    <string name="intro2_2">Consenti a SINE di funzionare con lo schermo spento o mentre fai altre attività</string>
+    <string name="intro2_3">CONTINUA</string>
     <string name="title_activity_details">Dettagli preset</string>
     <string name="reportBug">SEGNALA UN PROBLEMA</string>
     <string name="reportBugAddress">dossenus91@gmail.com</string>
@@ -65,5 +68,7 @@
     <string name="noise_switch">Togli Rumore di sottofondo</string>
     <string name="noise_switch_desc">Riavvio richiesto</string>
     <string name="noise_switch_restarting">SINE ripartirà tra un istante...</string>
+    <string name="disablePowerSaving">Disattiva risparmio energia</string>
+    <string name="disablePowerSavingDesc">Se l\'audio si interrompe improvvisamente</string>
 
 </resources>

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dosse.bwentrain.androidPlayer"
-    android:versionCode="24"
-    android:versionName="1.7">
+    android:versionCode="25"
+    android:versionName="1.7.1">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
 
     <application
         android:allowBackup="true"
@@ -117,7 +118,7 @@
             android:name=".DetailsActivity"
             android:label="@string/title_activity_details"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme2.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.dosse.bwentrain.androidPlayer.MainActivity" />
@@ -134,6 +135,11 @@
         </activity>
         <activity
             android:name=".IntroActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Intro2Activity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>

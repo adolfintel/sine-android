@@ -7,11 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.audiofx.BassBoost;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
+import android.provider.Settings;
 import android.widget.Toast;
 
 
@@ -34,6 +37,19 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
                 }
             }
         }catch (Throwable t){}
+        ((Preference)findPreference("disablePowerSaving")).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                try {
+                    Intent intent = new Intent();
+                    PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                    intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                    intent.setData(Uri.parse("package:" + getPackageName()));
+                    startActivity(intent);
+                }catch(Throwable t){}
+                return true;
+            }
+        });
     }
     @Override
     protected void onResume() {

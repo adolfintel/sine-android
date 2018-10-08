@@ -7,4 +7,10 @@
         android:defaultValue="false"
         />
 
+    <Preference
+        android:key="disablePowerSaving"
+        android:title="@string/disablePowerSaving"
+        android:summary="@string/disablePowerSavingDesc"
+        />
+
 </PreferenceScreen>
