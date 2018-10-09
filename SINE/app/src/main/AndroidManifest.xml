@@ -172,7 +172,7 @@
             android:name=".Intro2Activity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme2.NoActionBar"></activity>
         <activity
             android:name=".MinMinFaggot"
             android:label="@string/title_activity_min_min_faggot"

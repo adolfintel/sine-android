@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
@@ -183,8 +184,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         }catch(Throwable t){
         }
         try{
-            openFileInput("material.run");
-            //material.run exists, go straight to the app
+            openFileInput("usdk26.run");
+            //usdk26.run exists, go straight to the app
         }catch(Throwable t){
             Intent i=new Intent(MainActivity.this,IntroActivity.class);
             try{
@@ -197,7 +198,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             }
             startActivity(i);
             try {
-                openFileOutput("material.run", MODE_PRIVATE).close();
+                openFileOutput("usdk26.run", MODE_PRIVATE).close();
             } catch (Throwable t1) {
             }
         }
@@ -272,13 +273,18 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 finish();
             }
             if(p!=null) pc.setPreset(p); else Toast.makeText(getApplicationContext(), R.string.load_error, Toast.LENGTH_SHORT).show();
-            try { //try to disable power saving again, in case the user denied the first prompt
-                Intent intent = new Intent();
-                PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-                intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
-                intent.setData(Uri.parse("package:" + getPackageName()));
-                startActivity(intent);
-            }catch(Throwable t){}
+            if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+                try { //try to disable power saving again, in case the user denied the first prompt
+                    if(!getSystemService(PowerManager.class).isIgnoringBatteryOptimizations(getPackageName())) {
+                        Intent intent = new Intent();
+                        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                        intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                        intent.setData(Uri.parse("package:" + getPackageName()));
+                        startActivity(intent);
+                    }
+                } catch (Throwable t) {
+                }
+            }
         }
         super.onNewIntent(i);
     }

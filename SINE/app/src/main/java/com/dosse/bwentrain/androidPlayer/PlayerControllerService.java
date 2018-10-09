@@ -45,6 +45,7 @@ public class PlayerControllerService extends Service{
                         report.putExtra("position",p!=null?p.getPosition():0);
                         report.putExtra("length",p!=null?p.getLength():0);
                         report.putExtra("title",p!=null?p.getPreset().getTitle():"");
+                        report.putExtra("author",p!=null?p.getPreset().getAuthor():"");
                         LocalBroadcastManager.getInstance(PlayerControllerService.this).sendBroadcast(report);
                     }
                 }

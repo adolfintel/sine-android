@@ -1,6 +1,7 @@
 package com.dosse.bwentrain.androidPlayer;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,7 +20,9 @@ public class IntroActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.letsgo)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(IntroActivity.this,Intro2Activity.class));
+                if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+                    startActivity(new Intent(IntroActivity.this, Intro2Activity.class));
+                }
                 finish();
             }
         });
