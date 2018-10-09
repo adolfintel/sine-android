@@ -29,13 +29,14 @@ public class AboutActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.bugReport)).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("message/rfc822");
-                intent.putExtra(Intent.EXTRA_EMAIL, getString(R.string.reportBugAddress));
-                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.reportBugSubject));
-                intent.putExtra(Intent.EXTRA_TEXT, "\n\n\n\n\n\n---------------------------\nDevice model: "+Build.MODEL+"\nSDK Version: "+Build.VERSION.SDK_INT+"\nSINE Version: "+getPackageManager().getPackageInfo(getPackageName(), 0).versionCode);
-
-                startActivity(Intent.createChooser(intent, getString(R.string.reportBug)));}catch(Throwable t){}
+                try{
+                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("mailto:"));
+                    intent.putExtra(Intent.EXTRA_EMAIL, getString(R.string.reportBugAddress));
+                    intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.reportBugSubject));
+                    intent.putExtra(Intent.EXTRA_TEXT, "\n\n\n\n\n\n---------------------------\nDevice model: "+Build.MODEL+"\nSDK Version: "+Build.VERSION.SDK_INT+"\nSINE Version: "+getPackageManager().getPackageInfo(getPackageName(), 0).versionCode);
+                    startActivity(Intent.createChooser(intent, getString(R.string.reportBug)));
+                }catch(Throwable t){}
             }
         });
     }
@@ -77,16 +78,16 @@ public class AboutActivity extends AppCompatActivity {
             bennett.setOnClickListener(new OnClickListener() {
                 int arnold=0;
                 long fucking=0;
-                boolean scwarzenegger=false;
+                boolean schwarzenegger =false;
                 @Override
                 public void onClick(View v) {
-                    if(isPissed(scwarzenegger)){
+                    if(isPissed(schwarzenegger)){
                         terminate("YOU");
                     }else{
                         if(System.nanoTime()-fucking<=(Long.MAX_VALUE&0x11E1A300L)) arnold++; else arnold=Integer.MAX_VALUE&1;
                         fucking=System.nanoTime();
                         if(arnold==(0x56000-0x55FFE)){
-                            scwarzenegger=true;
+                            schwarzenegger =true;
                         }
                     }
                 }
