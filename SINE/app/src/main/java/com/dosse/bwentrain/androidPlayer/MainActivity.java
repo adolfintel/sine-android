@@ -433,9 +433,6 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             if(id==R.id.web){
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.website_url))));
             }
-            if(id==R.id.settings){
-                startActivity(new Intent(this,SettingsActivity.class));
-            }
             if(id==R.id.about){
                 startActivity(new Intent(this,AboutActivity.class));
             }
