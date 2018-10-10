@@ -14,8 +14,8 @@
     <string name="no">No</string>
     <string name="duration">Durata</string>
     <string name="loops_after">ripete dopo</string>
-    <string name="purchase">Rimuovi pubblicità</string>
-    <string name="purchase_url">market://details?id=com.dosse.bwentrain.androidPlayer.key</string>
+    <string name="donate">Dona</string>
+    <string name="donate_url">https://paypal.me/sineisochronic</string>
     <string name="title_activity_about">Informazioni su SINE</string>
     <string name="exit">Esci</string>
     <string name="about_text_1">SINE Isochronic Entrainer</string>

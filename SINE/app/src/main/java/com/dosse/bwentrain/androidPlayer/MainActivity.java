@@ -5,7 +5,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,8 +35,6 @@ import android.widget.Toast;
 import com.dosse.bwentrain.core.Envelope;
 import com.dosse.bwentrain.core.Preset;
 import com.dosse.bwentrain.renderers.isochronic.IsochronicRenderer;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import org.w3c.dom.Document;
 
@@ -56,76 +53,6 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     private static PlayerController pc; //PlayerController interfaces with LibBWEntrainment to control the playback
     static{new IsochronicRenderer(null, null, 0).stopPlaying();} //preload IsochronicRenderer
     private Menu optionsMenu; //pointer to optionsMenu, used by AdsController to remove purchase option if app is licensed
-    private int adsH;
-
-    /**
-     * checks license and loads ads if needed.
-     * also, great example of overhead: 70% of the code is there only because android wants it
-     * I also apologize for all the try-catches, but it seems to be quite unstable at times
-     * @author dosse
-     *
-     */
-    private class AdsController extends Thread{
-        public void run(){
-            while(optionsMenu==null) //wait for options menu to be created. this workaround is cheaper than an airPad 4
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {}
-            //there you go, fuckers: the CHEAPEST, CRAPPIEST license check ever, because LVL doesn't let me check the license of other apps (read pro key) anymore. thanks google, you fucktards.
-            if (getPackageManager().checkSignatures(getPackageName(), "com.dosse.bwentrain.androidPlayerKey")== PackageManager.SIGNATURE_MATCH) {
-                removeBuyOption();
-            }else{
-                loadAds();
-                //let's tell ad block users to support us
-                try{
-                    if(isPackageInstalled("tw.fatminmin.xposed.minminguard")||isPackageInstalled("org.adaway")||isPackageInstalled("org.adblockplus.android")){
-                        try{openFileInput("minmin.fag");}catch (Throwable t) {
-                            openFileOutput("minmin.fag", MODE_PRIVATE).close();
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    startActivity(new Intent(MainActivity.this, MinMinFaggot.class));
-                                }
-                            });
-                        }
-                    }
-                }catch (Throwable t){Log.e("SINE","Can't check for ad blockers "+t);}
-            }
-            //and they complain about piracy in android...
-        }
-        public boolean isPackageInstalled(String p){
-            try {
-                getPackageManager().getPackageInfo(p, PackageManager.GET_META_DATA);
-                return true;
-            } catch (Throwable t) {
-                return false;
-            }
-
-        }
-        private void loadAds(){
-            try{
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try{
-                            ((AdView)findViewById(R.id.banner)).getLayoutParams().height=adsH;
-                            ((AdView)findViewById(R.id.banner)).loadAd(new AdRequest.Builder().build());
-                        }catch(Throwable t){}
-                    }
-                });
-            }catch(Throwable t){}
-        }
-        private void removeBuyOption(){
-            try{
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try{optionsMenu.getItem(0).setVisible(false);}catch(Throwable t){}
-                    }
-                });
-            }catch(Throwable t){}
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,15 +68,10 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
         view.getMenu().getItem(0).setChecked(true);
-
-        //hide ads, will be shown again if the app is not licensed
-        adsH=((AdView)findViewById(R.id.banner)).getLayoutParams().height;
-        ((AdView)findViewById(R.id.banner)).getLayoutParams().height=0;
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState){
-        new AdsController().start();
         try {
             if (getIntent().getData() != null) { //called from an url
                 Uri u = getIntent().getData();
@@ -206,18 +128,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     }
 
     @Override
-    protected void onPause(){
-        try{((AdView)findViewById(R.id.banner)).pause();}catch(Throwable t){}
-        super.onPause();
-    }
-    @Override
-    protected void onDestroy() {
-        try{((AdView)findViewById(R.id.banner)).destroy();}catch(Throwable t){}
-        super.onDestroy();
-    }
-    @Override
     protected void onResume() {
-        try{((AdView)findViewById(R.id.banner)).resume();}catch(Throwable t){}
         TextView status=(TextView)findViewById(R.id.textView1);
         SeekBar bar=(SeekBar)findViewById(R.id.seekBar1);
         Button playPause=(Button)findViewById(R.id.button1);
@@ -421,11 +332,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         try{
-            if(id==R.id.purchase){
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.purchase_url))));
-            }
-            if(id==R.id.playStore){
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.playStore_url))));
+            if(id==R.id.donate){
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.donate_url))));
             }
             if(id==R.id.fb){
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.fb_url))));

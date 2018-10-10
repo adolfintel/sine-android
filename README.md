@@ -8,12 +8,11 @@ The effect is not permanent, and fades away in less than a minute after the stim
 Isochronic tones are a commonly used aural stimuli for Brainwave Entrainment, consisting of short pulses of a sine wave, varying in frequency. Unlike binaural beats, isochronic tones can be played on speakers. 
 
 This Android Version only has playback capabilities.
+
+This branch is meant to be compliant to F-Droid rules, so it has no proprietary stuff or precompiled libraries.
  
 ## Website
 [SINE Isochronic Entrainer](http://isochronic.io/)
-
-## Download
-[Download from Google Play](https://play.google.com/store/apps/details?id=com.dosse.bwentrain.androidPlayer)
 
 ## Compatibility
 Android 4.0.3 and up. All architectures

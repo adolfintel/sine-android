@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/seekBar1"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/banner"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="8dp"
          >
 
@@ -59,14 +59,5 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:gravity="center_horizontal"
         />
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/banner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        ads:adUnitId="ca-app-pub-6263530127209064/8224141839"
-        ads:adSize="SMART_BANNER"
-        />
-
 
 </RelativeLayout>
