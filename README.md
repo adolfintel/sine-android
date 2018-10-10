@@ -19,7 +19,7 @@ This Android Version only has playback capabilities.
 Android 4.0.3 and up. All architectures
  
 ## Usage
-Import the projects into Android Studio. SDK 15 and 23 must be installed.
+Import the projects into Android Studio. SDK 15 and 26 must be installed.
 
 ## Screenshots
 ![Screenshot](http://fdossena.com/sine/android1.png)
@@ -27,7 +27,7 @@ Import the projects into Android Studio. SDK 15 and 23 must be installed.
 ![Screenshot](http://fdossena.com/sine/android3.png)
 
 ## License
-Copyright (C) 2016 Federico Dossena
+Copyright (C) 2014-2018 Federico Dossena
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

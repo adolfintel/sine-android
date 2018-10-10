@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import android.app.Activity;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -14,6 +15,8 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Button;
@@ -48,6 +51,16 @@ public class PlayerController extends BroadcastReceiver {
 		LocalBroadcastManager.getInstance(mainUI).registerReceiver(this,f);
 		PowerManager pm= (PowerManager) mainUI.getSystemService(Context.POWER_SERVICE);
 		final WakeLock lock=pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "SINE");
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { //on oreo and newer, create a notification channel
+			int importance = NotificationManager.IMPORTANCE_LOW;
+			NotificationChannel channel = new NotificationChannel("SINE", "SINE", importance);
+			channel.enableVibration(false);
+			channel.enableLights(false);
+			channel.setShowBadge(true);
+			//channel.setDescription("");
+			NotificationManager notificationManager = mainUI.getSystemService(NotificationManager.class);
+			notificationManager.createNotificationChannel(channel);
+		}
 	}
 	
     
@@ -98,6 +111,7 @@ public class PlayerController extends BroadcastReceiver {
 		final float position=intent.getFloatExtra("position",0);
 		final float length=intent.getFloatExtra("length",0);
 		final String presetTitle=intent.getStringExtra("title");
+		final String presetAuthor=intent.getStringExtra("author");
 
 		if(!mainUI.hasWindowFocus()) return;
 		mainUI.runOnUiThread(new Runnable() {
@@ -123,26 +137,24 @@ public class PlayerController extends BroadcastReceiver {
 					if(isPlaying) playPause.setBackgroundResource(R.drawable.pause); else playPause.setBackgroundResource(R.drawable.play);
 				}
 				//show persistent notification and acquire wakelock while playing
-				NotificationManager notifManager = (NotificationManager) mainUI.getSystemService(Context.NOTIFICATION_SERVICE);
+
+				NotificationManagerCompat notifManager = NotificationManagerCompat.from(mainUI);
 				if (isPresetLoaded&&isPlaying) {
 					if(lock!=null) {
 						if (lock.isHeld()) return; //already showing notification and holding wakelock
 						if (!lock.isHeld()) lock.acquire();
 					}
-					PendingIntent intent = PendingIntent.getActivity(mainUI.getApplicationContext(), 0,new Intent(mainUI.getApplicationContext(),MainActivity.class), 0);
-					Notification.Builder builder = new Notification.Builder(mainUI.getApplicationContext());
-					builder.setContentTitle(mainUI.getTitle());
-					builder.setContentText(presetTitle);
-					builder.setContentIntent(intent);
-					builder.setSmallIcon(R.drawable.logo_notif);
-					builder.setOngoing(true);
-					Notification notification=null;
-					if(Build.VERSION.SDK_INT<16){
-						notification=builder.getNotification();
-					}else{
-						notification = builder.build();
-					}
-					notifManager.notify(0, notification);
+					NotificationCompat.Builder mBuilder=new NotificationCompat.Builder(mainUI,"SINE");
+					PendingIntent intent = PendingIntent.getActivity(mainUI,0,new Intent(mainUI,MainActivity.class),0);
+					mBuilder.setContentTitle(presetTitle);
+					mBuilder.setContentText(presetAuthor);
+					mBuilder.setContentIntent(intent);
+					mBuilder.setSmallIcon(R.drawable.logo_notif);
+					mBuilder.setShowWhen(false);
+					mBuilder.setOngoing(true);
+					mBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) mBuilder.setPriority(NotificationCompat.PRIORITY_MIN);
+					notifManager.notify(0, mBuilder.build());
 				} else {
 					if(lock!=null){
 						if(!lock.isHeld()) return; //already removed notification and wakelock

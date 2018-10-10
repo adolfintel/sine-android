@@ -1,39 +1,21 @@
 package com.dosse.bwentrain.androidPlayer;
 
-import android.graphics.Color;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-
-import java.util.Timer;
-import java.util.TimerTask;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.os.Build;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -47,13 +29,14 @@ public class AboutActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.bugReport)).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("message/rfc822");
-                intent.putExtra(Intent.EXTRA_EMAIL, getString(R.string.reportBugAddress));
-                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.reportBugSubject));
-                intent.putExtra(Intent.EXTRA_TEXT, "\n\n\n\n\n\n---------------------------\nDevice model: "+Build.MODEL+"\nSDK Version: "+Build.VERSION.SDK_INT+"\nSINE Version: "+getPackageManager().getPackageInfo(getPackageName(), 0).versionCode);
-
-                startActivity(Intent.createChooser(intent, getString(R.string.reportBug)));}catch(Throwable t){}
+                try{
+                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("mailto:"));
+                    intent.putExtra(Intent.EXTRA_EMAIL, getString(R.string.reportBugAddress));
+                    intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.reportBugSubject));
+                    intent.putExtra(Intent.EXTRA_TEXT, "\n\n\n\n\n\n---------------------------\nDevice model: "+Build.MODEL+"\nSDK Version: "+Build.VERSION.SDK_INT+"\nSINE Version: "+getPackageManager().getPackageInfo(getPackageName(), 0).versionCode);
+                    startActivity(Intent.createChooser(intent, getString(R.string.reportBug)));
+                }catch(Throwable t){}
             }
         });
     }
@@ -95,16 +78,16 @@ public class AboutActivity extends AppCompatActivity {
             bennett.setOnClickListener(new OnClickListener() {
                 int arnold=0;
                 long fucking=0;
-                boolean scwarzenegger=false;
+                boolean schwarzenegger =false;
                 @Override
                 public void onClick(View v) {
-                    if(isPissed(scwarzenegger)){
+                    if(isPissed(schwarzenegger)){
                         terminate("YOU");
                     }else{
                         if(System.nanoTime()-fucking<=(Long.MAX_VALUE&0x11E1A300L)) arnold++; else arnold=Integer.MAX_VALUE&1;
                         fucking=System.nanoTime();
                         if(arnold==(0x56000-0x55FFE)){
-                            scwarzenegger=true;
+                            schwarzenegger =true;
                         }
                     }
                 }

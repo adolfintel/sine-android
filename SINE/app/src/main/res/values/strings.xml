@@ -37,6 +37,9 @@
     <string name="intro1u">Thank you for updating SINE!</string>
     <string name="intro2u">Don\'t worry, everything is still there!\nWe hope you enjoy the new colorful look :)</string>
     <string name="intro3">LET\'S GO!</string>
+    <string name="intro2_1">Background playback</string>
+    <string name="intro2_2">Allow SINE to run when the display is off or while you\'re using your phone</string>
+    <string name="intro2_3">CONTINUE</string>
     <string name="title_activity_details">Preset details</string>
     <string name="reportBug">REPORT A BUG</string>
     <string name="reportBugAddress">dossenus91@gmail.com</string>
