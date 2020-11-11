@@ -4,7 +4,7 @@
     <string name="title_activity_browser">Preset</string>
     <string name="download_presets">Scarica Preset</string>
     <string name="theyre_free">Sono gratis!</string>
-    <string name="presets_url">http://isochronic.io/setLocale.php?l=it&amp;r=presets.php%3Fapp=true</string>
+    <string name="presets_url">https://sine.fdossena.com/setLocale.php?l=it&amp;r=presets.php%3Fapp=true</string>
     <string name="load_error">Si è verificato un errore durante il caricamento del Preset</string>
     <string name="no_connection">Nessuna connessione ad Internet</string>
     <string name="download_success">Preset scaricato</string>
@@ -15,7 +15,7 @@
     <string name="duration">Durata</string>
     <string name="loops_after">ripete dopo</string>
     <string name="donate">Dona</string>
-    <string name="donate_url">https://paypal.me/sineisochronic</string>
+    <string name="donate_url">https://donate.fdossena.com/</string>
     <string name="title_activity_about">Informazioni su SINE</string>
     <string name="exit">Esci</string>
     <string name="about_text_1">SINE Isochronic Entrainer</string>
@@ -23,16 +23,7 @@
     <string name="about_text_3">Crediti e robe legali</string>
     <string name="about_text_4">Quest\'applicazione è sviluppata da Federico Dossena ed è distribuita su licenza GNU GPLv3.\nLibBWEntrainment, LibBWEntrainment-Renderer-Isochronic e LibBWEntrainment-SoundBackends-Android sono sviluppati da Federico Dossena e sono distribuiti su licenza GNU LGPLv3.\nParte della grafica di quest\'applicazione è stata scaricata da  http://icons8.com/.</string>
     <string name="website">Visita il nostro sito</string>
-    <string name="website_url">http://isochronic.io</string>
-    <string name="socialCrap">Segui SINE</string>
-    <string name="fb">Facebook</string>
-    <string name="fb_url">https://www.facebook.com/pages/SINE-Isochronic-Entrainer/649115715183345</string>
-    <string name="tw">Twitter</string>
-    <string name="tw_url">https://twitter.com/sineisochronic</string>
-    <string name="gp">Google+</string>
-    <string name="gp_url">https://plus.google.com/b/101215926277332300359/101215926277332300359/posts</string>
-    <string name="playStore">Valuta applicazione</string>
-    <string name="playStore_url">market://details?id=com.dosse.bwentrain.androidPlayer</string>
+    <string name="website_url">https://sine.fdossena.com</string>
     <string name="intro1">Grazie per aver scaricato SINE Isochronic Entrainer</string>
     <string name="intro2">Speriamo che ti piaccia tanto quanto ci è piaciuto svilupparla</string>
     <string name="intro1u">Grazie per aver aggiornato SINE!</string>
@@ -43,19 +34,14 @@
     <string name="intro2_3">CONTINUA</string>
     <string name="title_activity_details">Dettagli preset</string>
     <string name="reportBug">SEGNALA UN PROBLEMA</string>
-    <string name="reportBugAddress">dossenus91@gmail.com</string>
+    <string name="reportBugAddress">info@fdossena.com</string>
     <string name="reportBugSubject">SINE - Problema</string>
-    <string name="title_activity_min_min_faggot">Ad blocker rilevato</string>
-    <string name="minminfag1">Stai bloccando la pubblcità :(</string>
-    <string name="minminfag2">Lo so, lo so, danno fastidio, anche io uso diversi ad blocker, ma abbiamo bisogno del tuo supporto per mantenere SINE vivo, quindi dona o almeno sblocca le pubblicità</string>
-    <string name="minminfag3">(Tranquillo, non te lo diremo di nuovo)</string>
-    <string name="minminfag4">OK, CAPITO</string>
     <string name="title_activity_community">Community</string>
     <string name="community_invalid_presetId">Link a preset non valido</string>
     <string name="community_unknown_url">Stai uscendo dalla community di SINE</string>
     <string name="load_error_community">Caricamento fallito</string>
     <string name="unknown_download">Puoi solo scaricare Preset per SINE da quì</string>
-    <string name="forum_url">http://isochronic.io/forum</string>
+    <string name="forum_url">https://sine.fdossena.com/forum</string>
     <string name="delete">Cancella</string>
     <string name="preset_importing">Importo il Preset</string>
     <string name="import_preset">Importa Preset di SINE</string>

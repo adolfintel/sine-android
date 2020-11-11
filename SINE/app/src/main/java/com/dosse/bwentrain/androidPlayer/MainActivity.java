@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 Uri u = getIntent().getData();
                 if(u==null) throw new Exception();
                 String url = u.getScheme() + ":" + u.getEncodedSchemeSpecificPart();
-                if (url.toLowerCase().startsWith("http://sine.adolfintel.com/forum") || url.toLowerCase().startsWith("http://isochronic.io/forum"))
+                if (url.toLowerCase().startsWith("http://sine.adolfintel.com/forum") || url.toLowerCase().startsWith("http://isochronic.io/forum") || url.toLowerCase().startsWith("http://sine.fdossena.com/forum"))
                     startActivity(new Intent(this, CommunityActivity.class).putExtra("path", url)); //throw the url to the community activity
-                else if (url.toLowerCase().startsWith("http://sine.adolfintel.com/goto.php") || url.toLowerCase().startsWith("http://sine.adolfintel.com/presets.php") || url.toLowerCase().startsWith("http://isochronic.io/goto.php") || url.toLowerCase().startsWith("http://isochronic.io/presets.php")) { //link to a preset, or to the preset page
+                else if (url.toLowerCase().startsWith("http://sine.adolfintel.com/goto.php") || url.toLowerCase().startsWith("http://sine.adolfintel.com/presets.php") || url.toLowerCase().startsWith("http://isochronic.io/goto.php") || url.toLowerCase().startsWith("http://isochronic.io/presets.php") || url.toLowerCase().startsWith("http://sine.fdossena.com/goto.php") || url.toLowerCase().startsWith("http://sine.fdossena.com/presets.php")) { //link to a preset, or to the preset page
                     //attempt to convert to mobile and localized link
                     try {
                         String newUrl = getString(R.string.presets_url);
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 HashMap<String, String> item=list.get(position);
-                if(item.get("path").startsWith("http://")){ //link
+                if(item.get("path").startsWith("http://")||item.get("path").startsWith("https://")){ //link
                     Intent i=new Intent(MainActivity.this, BrowserActivity.class);
                     i.putExtra("path",item.get("path"));
                     startActivity(i);
@@ -296,7 +296,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                                            int position, long id) {
                 HashMap<String, String> item=list.get(position);
                 final String path=item.get("path");
-                if(path.startsWith("http://")) return true; //can't delete links
+                if(path.startsWith("http://")||path.startsWith("https://")) return true; //can't delete links
                 //delete preset
                 //ask for confirm
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -334,15 +334,6 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         try{
             if(id==R.id.donate){
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.donate_url))));
-            }
-            if(id==R.id.fb){
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.fb_url))));
-            }
-            if(id==R.id.tw){
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.tw_url))));
-            }
-            if(id==R.id.gp){
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.gp_url))));
             }
             if(id==R.id.web){
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.website_url))));
