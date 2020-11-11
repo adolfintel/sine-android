@@ -12,7 +12,7 @@ This Android Version only has playback capabilities.
 This branch is meant to be compliant to F-Droid rules, so it has no proprietary stuff or precompiled libraries.
  
 ## Website
-[SINE Isochronic Entrainer](http://isochronic.io/)
+[SINE Isochronic Entrainer](http://sine.fdossena.com/)
 
 ## Download
 
@@ -35,7 +35,7 @@ Import the projects into Android Studio. SDK 15 and 26 must be installed.
 ![Screenshot](http://fdossena.com/sine/android3.png)
 
 ## License
-Copyright (C) 2014-2018 Federico Dossena
+Copyright (C) 2014-2020 Federico Dossena
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
