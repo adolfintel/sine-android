@@ -12,16 +12,10 @@ This Android Version only has playback capabilities.
 This branch is meant to be compliant to F-Droid rules, so it has no proprietary stuff or precompiled libraries.
  
 ## Website
-[SINE Isochronic Entrainer](http://sine.fdossena.com/)
+[SINE Isochronic Entrainer](https://sine.fdossena.com/)
 
 ## Download
-
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/com.dosse.bwentrain.androidPlayer/)
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
-     alt="Get it on Google Play"
-     height="80">](https://play.google.com/store/apps/details?id=com.dosse.bwentrain.androidPlayer)
+![Download APK](https://downloads.fdossena.com/geth.php?r=sine-androidfloss)
 
 ## Compatibility
 Android 4.0.3 and up. All architectures
