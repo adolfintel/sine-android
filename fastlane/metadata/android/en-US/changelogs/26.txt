@@ -1,0 +1,4 @@
++ Replaced dead links
+
+**End of Life (EoL)**
+This will be the last version of SINE. All presets are still available through my archive.
