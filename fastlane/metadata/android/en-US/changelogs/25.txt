@@ -1,0 +1,6 @@
++ Added donation link; 
+- Removed all google botnet; 
+- Removed .jar libraries
+
+**Pure floss fork of the main project**
+This branch is meant to be compliant to F-Droid rules, so it has no proprietary stuff or precompiled libraries.
